@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!--别名设置-->
+    <typeAliases>
+        <package name="com.xhu.entity"/>
+    </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--使用对应数据库的分页-->
+            <property name="helperDialect" value="mysql"/>
+            <!--分页的页码为0时的，默认查询全部-->
+            <property name="pageSizeZero" value="true"/>
+            <!--分页的参数合理化，页码数字<0 默认查询第一页 页码数字>总页数 默认查询最后一页-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+</configuration>

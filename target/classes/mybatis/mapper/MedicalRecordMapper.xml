@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhu.mapper.MedicalRecordMapper">
+    <resultMap id="recordMap" type="com.xhu.entity.MedicalRecord">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="record_name" jdbcType="VARCHAR" property="recordName"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="history" jdbcType="VARCHAR" property="history"/>
+        <result column="symptom" jdbcType="VARCHAR" property="symptom"/>
+        <result column="preason" jdbcType="VARCHAR" property="preason"/>
+        <result column="prescription" jdbcType="VARCHAR" property="prescription"/>
+        <result column="advice" jdbcType="VARCHAR" property="advice"/>
+        <result column="image" jdbcType="VARCHAR" property="image"/>
+        <result column="image_description" jdbcType="VARCHAR" property="imageDescription"/>
+        <!--        <result column="record_time" jdbcType="TIMESTAMP" property="recordTime"/>-->
+        <result column="record_time" jdbcType="DATE" property="recordTime"/>
+        <result column="doctor_id" jdbcType="INTEGER" property="doctorId"/>
+    </resultMap>
+
+    <sql id="all">
+        select *
+        from medical_record
+    </sql>
+
+    <select id="findAll" resultMap="recordMap">
+        <include refid="all"/>
+    </select>
+
+    <select id="findBelong" resultMap="recordMap" parameterType="java.lang.Integer">
+        <include refid="all"/>
+        where doctor_id in
+        (select id from doctor where card in
+        (select card from user where id=#{id}))
+    </select>
+
+    <select id="findByNature" parameterType="java.util.Map" resultMap="recordMap">
+        <include refid="all"/>
+        <choose>
+            <when test="recordName!=null">
+                where record_name=#{recordName}
+            </when>
+            <when test="startTime!=null and endTime!=null">
+                where record_time>=#{startTime} and #{endTime}>=record_time;
+            </when>
+        </choose>
+    </select>
+
+    <insert id="insertRc" parameterType="MedicalRecord">
+        insert into medical_record(record_name,patient_name,
+        history, symptom, preason, prescription, advice,
+        doctor_id,
+        <if test="image!=null">
+            image,
+        </if>
+        <if test="imageDescription!=null">
+            image_description,
+        </if>
+        record_time)
+        values (#{recordName},#{patientName}, #{history}, #{symptom},
+        #{preason}, #{prescription}, #{advice},#{doctorId},
+        <if test="image!=null">
+            #{image},
+        </if>
+        <if test="imageDescription!=null">
+            #{imageDescription},
+        </if>
+        now())
+    </insert>
+
+    <delete id="delRc" parameterType="java.lang.Integer">
+        delete
+        from medical_record
+        where id = #{id}
+    </delete>
+
+    <update id="modifyRc" parameterType="MedicalRecord">
+        update medical_record
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="recordName!=null">
+                record_name=#{recordName},
+            </if>
+            <if test="patientName!=null">
+                patient_name=#{patientName},
+            </if>
+            <if test="history!=null">
+                history=#{history},
+            </if>
+            <if test="symptom!=null">
+                symptom=#{symptom},
+            </if>
+            <if test="preason!=null">
+                preason=#{preason},
+            </if>
+            <if test="prescription!=null">
+                prescription=#{prescription},
+            </if>
+            <if test="advice!=null">
+                advice=#{advice},
+            </if>
+            <if test="image!=null">
+                image=#{image},
+            </if>
+            <if test="imageDescription!=null">
+                image_description=#{imageDescription},
+            </if>
+            <if test="doctorId!=null">
+                doctor_id=#{doctorId},
+            </if>
+            <if test="recordTime!=null">
+                record_time=#{recordTime},
+            </if>
+        </trim>
+    </update>
+</mapper>

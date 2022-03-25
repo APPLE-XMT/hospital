@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--让IoC容器读取数据库的连接配置-->
+    <context:property-placeholder location="classpath:database.properties"/>
+    <!--配连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${druid.driverClassName}"/>
+        <property name="url" value="${druid.url}"/>
+        <property name="username" value="${druid.username}"/>
+        <property name="password" value="${druid.password}"/>
+    </bean>
+    <!--2.配置SqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:mybatis/mapper/*.xml"/>
+    </bean>
+    <!--1.配置Mapper扫描器-->
+    <!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+    <!--    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>-->
+    <!--    <property name="basePackage" value="com.xuetang9.xxgjk.mapper"/>-->
+    <!--</bean>-->
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <property name="basePackage" value="com.xhu.mapper" />
+    </bean>
+
+
+    <!--3.配置事务管理器，帮我们主动提交事务-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--4.配置事务的注解扫描驱动-->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+    <!--5.配置AOP自动代理-->
+    <aop:aspectj-autoproxy />
+    <!--6.配置IoC扫描的包-->
+    <context:component-scan base-package="com.xhu" use-default-filters="true">
+        <!--排除原生的控制器-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+</beans>

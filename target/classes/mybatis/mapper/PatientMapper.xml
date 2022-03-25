@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhu.mapper.PatientMapper">
+    <resultMap id="patientMap" type="com.xhu.entity.Patient">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="patient_name" jdbcType="VARCHAR" property="patientName"/>
+        <result column="sex" jdbcType="CHAR" property="sex"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="country" jdbcType="VARCHAR" property="country"/>
+        <result column="nation" jdbcType="VARCHAR" property="nation"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="card" jdbcType="VARCHAR" property="card"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="belong_department" jdbcType="INTEGER" property="belongDepartment"/>
+        <result column="belong_department" jdbcType="INTEGER" property="belongDoctor"/>
+        <result column="patient_state" jdbcType="VARCHAR" property="patientState"/>
+    </resultMap>
+
+    <sql id="all">
+        select *
+        from patient
+    </sql>
+
+    <select id="viewPatients" resultMap="patientMap">
+        <include refid="all"></include>
+    </select>
+
+    <select id="findBelong" parameterType="java.lang.Integer" resultMap="patientMap">
+        <include refid="all"></include>
+        where belong_doctor=#{belongDoctor}
+    </select>
+
+    <insert id="insertPa" parameterType="Patient">
+        insert into patient(patient_name, sex, age, country, nation, address, card, phone, belong_department,
+                            belong_doctor, patient_state)
+        values (#{patientName,}, #{sex}, #{age}, #{country}, #{nation}, #{address}, #{card}, #{phone},
+                #{belongDepartment}, #{belongDoctor}, #{patientState})
+    </insert>
+
+    <update id="modify" parameterType="Patient">
+        update patient
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="patientName!=null">
+                patient_name=#{patientName},
+            </if>
+            <if test="sex!=null">
+                sex=#{sex},
+            </if>
+            <if test="age!=null">
+                age=#{age},
+            </if>
+            <if test="country!=null">
+                country=#{country},
+            </if>
+            <if test="nation!=null">
+                nation=#{nation},
+            </if>
+            <if test="address!=null">
+                address=#{address},
+            </if>
+            <if test="card!=null">
+                card=#{card},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone},
+            </if>
+            <if test="belongDepartment!=null">
+                belong_department=#{belongDepartment},
+            </if>
+            <if test="belongDoctor!=null">
+                belong_doctor=#{belongDoctor},
+            </if>
+            <if test="patientState!=null">
+                patient_state=#{patientState},
+            </if>
+        </trim>
+    </update>
+</mapper>

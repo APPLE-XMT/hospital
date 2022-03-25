@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhu.mapper.UserMapper">
+    <resultMap id="userMap" type="com.xhu.entity.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="card" jdbcType="VARCHAR" property="card"/>
+        <result column="phone" jdbcType="CHAR" property="phone"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="state" jdbcType="INTEGER" property="state"/>
+    </resultMap>
+    <sql id="all">
+        select *
+        from user where state=1
+    </sql>
+
+    <select id="findOne" resultType="User" parameterType="User">
+        select id, username, password
+        from user
+        where username = #{username} and state=1
+        <if test="password!=null">
+            and password = #{password}
+        </if>
+    </select>
+
+    <select id="viewInf" resultMap="userMap" parameterType="java.lang.Integer">
+        <include refid="all"/>
+        and id = #{id}
+    </select>
+
+    <select id="findAll" resultMap="userMap">
+        <include refid="all"/>
+    </select>
+
+    <update id="modifyPsw" parameterType="User">
+        update user
+        set password=#{password}
+        where username = #{username}
+    </update>
+
+    <update id="infModify" parameterType="User">
+        update user
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="username!=null">
+                username=#{username},
+            </if>
+            <if test="realName!=null">
+                real_name=#{realName},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone},
+            </if>
+            <if test="email!=null">
+                email=#{email},
+            </if>
+            <if test="address!=null">
+                address=#{address},
+            </if>
+        </trim>
+    </update>
+
+    <update id="updateState" parameterType="java.lang.String">
+        update user set state=1 where card=#{card}
+    </update>
+
+    <delete id="accountDelete" parameterType="java.lang.Integer">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+
+    <insert id="insertUser" parameterType="User">
+        insert into user(username, password, real_name, card, phone, email, address)
+        values (#{username}, #{password}, #{realName}, #{card}, #{phone}, #{email}, #{address})
+    </insert>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhu.mapper.DepartmentMapper">
+    <resultMap id="depMap" type="com.xhu.entity.Department">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="department_name" jdbcType="VARCHAR" property="departmentName"/>
+        <result column="department_phone" jdbcType="VARCHAR" property="departmentPhone"/>
+        <result column="department_description" jdbcType="VARCHAR" property="departmentDescription"/>
+        <result column="is_enabled" jdbcType="INTEGER" property="isEnabled"/>
+    </resultMap>
+    <insert id="addDep" parameterType="Department">
+        insert into department(department_name, department_phone
+        <if test="departmentDescription!=null">
+            ,department_description
+        </if>
+        )values(#{departmentName},#{departmentPhone}
+        <if test="departmentDescription!=null">
+            ,#{departmentDescription}
+        </if>
+        )
+    </insert>
+
+    <delete id="delDep" parameterType="java.lang.String">
+        update department
+        set is_enabled=1
+        where department_name = #{departmentName}
+    </delete>
+
+    <select id="searchOne" resultMap="depMap" parameterType="java.lang.String">
+        select *
+        from department
+        where department_name = #{departmentName}
+          and is_enabled = 0
+    </select>
+
+    <select id="selectAll" resultMap="depMap">
+        select *
+        from department
+        where is_enabled = 0
+    </select>
+
+    <update id="modifyDep" parameterType="Department">
+        update department
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="departmentName!=null">
+                department_name=#{departmentName},
+            </if>
+            <if test="departmentPhone!=null">
+                department_phone=#{departmentPhone},
+            </if>
+            <if test="departmentDescription!=null">
+                department_description=#{departmentDescription},
+            </if>
+        </trim>
+    </update>
+</mapper>

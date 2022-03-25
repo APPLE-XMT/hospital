@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhu.mapper.DoctorMapper">
+    <resultMap id="docMap" type="com.xhu.entity.Doctor">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="doctor_name" jdbcType="VARCHAR" property="doctorName"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="card" jdbcType="VARCHAR" property="card"/>
+        <result column="phone" jdbcType="CHAR" property="phone"/>
+        <result column="department_id" jdbcType="INTEGER" property="departmentId"/>
+        <result column="position_id" jdbcType="INTEGER" property="positionId"/>
+        <result column="work_time" jdbcType="INTEGER" property="workTime"/>
+    </resultMap>
+
+    <select id="viewDoctor" resultMap="docMap">
+        select *
+        from doctor
+    </select>
+
+    <update id="modify" parameterType="Doctor">
+        update doctor
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="doctorName!=null">
+                doctor_name=#{doctorName},
+            </if>
+            <if test="sex!=null">
+                sex=#{sex},
+            </if>
+            <if test="age!=null">
+                age=#{age},
+            </if>
+            <if test="card!=null">
+                card=#{card},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone},
+            </if>
+            <if test="departmentId!=null">
+                department_id=#{departmentId},
+            </if>
+            <if test="positionId!=null">
+                position_id=#{positionId},
+            </if>
+            <if test="workTime!=null">
+                work_time=#{workTime},
+            </if>
+        </trim>
+    </update>
+
+    <delete id="deleteDoc" parameterType="java.lang.Integer">
+        delete
+        from doctor
+        where id =
+              #{id}
+    </delete>
+
+    <insert id="addDoc" parameterType="Doctor">
+        insert into doctor(doctor_name, sex, age, card, phone, department_id, position_id, work_time)
+        values (#{doctorName}, #{sex}, #{age}, #{card}, #{phone}, #{departmentId}, #{positionId}, #{workTime})
+    </insert>
+</mapper>

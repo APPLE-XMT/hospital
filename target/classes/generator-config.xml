@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="database.properties"/>
+
+    <context id="mysql"
+             targetRuntime="tk.mybatis.mapper.generator.TkMyBatis3SimpleImpl"
+             defaultModelType="flat">
+        <!--分隔符设置-->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <!--设置生成的Mapper继承自哪个接口-->
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+
+        <!--配置数据库的连接-->
+        <jdbcConnection driverClass="${druid.driverClassName}"
+                        connectionURL="${druid.url}"
+                        userId="${druid.username}"
+                        password="${druid.password}">
+            <!--不生成其他数据库的表-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+        <!--配置实体类生成的位置-->
+        <javaModelGenerator targetPackage="${targetModelPackage}" targetProject="${targetJavaProject}"/>
+        <!--配置sql映射文件的位置-->
+        <sqlMapGenerator targetPackage="${targetXMLPackage}" targetProject="${targetResourcesProject}"/>
+        <!--配置Mapper接口的位置-->
+        <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}" type="XMLMAPPER"/>
+
+        <table tableName="%" mapperName="{0}Mapper">
+            <generatedKey column="id" sqlStatement="mysql" identity="false"/>
+        </table>
+    </context>
+</generatorConfiguration>

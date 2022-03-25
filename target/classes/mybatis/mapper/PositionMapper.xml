@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhu.mapper.PositionMapper">
+  <resultMap id="positionMap" type="com.xhu.entity.Position">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="position_name" jdbcType="VARCHAR" property="positionName" />
+  </resultMap>
+
+    <select id="viewAllPosition" resultMap="positionMap">
+      select * from position
+    </select>
+</mapper>
