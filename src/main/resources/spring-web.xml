@@ -24,6 +24,7 @@
 
     <!--允许DispatcherServlet访问静态资源-->
     <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+    <mvc:resources mapping="/views/**" location="/WEB-INF/views/"/>
 
     <!--配置扫描的包-->
     <context:component-scan base-package="com.xhu" use-default-filters="false">
