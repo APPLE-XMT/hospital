@@ -16,4 +16,6 @@ public interface PatientMapper extends Mapper<Patient> {
     int modify(Patient patient);
 
     int insertPa(Patient patient);
+
+    Patient search(String card);
 }

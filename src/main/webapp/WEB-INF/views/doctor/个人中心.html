@@ -6,8 +6,29 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>管理页面</title>
       <link rel="stylesheet" href="../../static/css/style.css">
+       <script type="text/javascript">
+           function start(){
+               UserInfushow();
+           }
+           function  UserInfushow(){
+               $.ajax({
+                   url:"/userInf",
+                   context: document.body,
+                   type: 'post',
+                   data:{},
+                   success:function(res){
+                       document.getElementById('username').innerHTML =res.data.users.username;
+                       document.getElementById('realname').innerHTML =res.data.users.realName;
+                       document.getElementById('phone').innerHTML =res.data.users.phone;
+                       document.getElementById('email').innerHTML =res.data.users.email;
+                       document.getElementById('address').innerHTML =res.data.users.address;
+                       document.getElementById('card').innerHTML =res.data.users.card;
+                   }
+               })
+           }
+       </script>
    </head>
-   <body>
+   <body onload="start()">
    <div id="loading"><div id="loading-center"></div></div>
    <div class="wrapper">
        <div class="iq-sidebar">
@@ -197,16 +218,15 @@
 
                      <div class="bxx">
                   <img src="../../static/images/user1.jpg">
-                     <h3>用户名</h3>
                      <ul class="row">
                         <li class="col-xl-8">
                            <ul class="row">
-                              <li class="col-xl-6"><strong>姓名</strong>：</li>
-                               <li class="col-xl-6"><strong>性别</strong>：</li>
-                              <li class="col-xl-6"><strong>手机号码</strong>：</li>
-                              <li class="col-xl-6"><strong>电子邮箱</strong>：</li>
-                              <li class="col-xl-6"><strong>身份证号</strong>：</li>
-                              <li class="col-xl-6"><strong>家庭地址</strong>：</li>
+                              <li class="col-xl-6"><strong>用户名</strong>：<label id="username"></label></li>
+                              <li class="col-xl-6"><strong>姓名</strong>：<label id="realname"></label></li>
+                              <li class="col-xl-6"><strong>手机号码</strong>：<label id="phone"></label></li>
+                              <li class="col-xl-6"><strong>电子邮箱</strong>：<label id="email"></label></li>
+                              <li class="col-xl-6"><strong>身份证号</strong>：<label id="card"></label></li>
+                              <li class="col-xl-6"><strong>家庭地址</strong>：<label id="address"></label></li>
                         </ul>
                            </li>
                      </ul>
@@ -240,15 +260,13 @@
       <script src="../../static/js/smooth-scrollbar.js"></script>
       <script src="../../static/js/custom.js"></script>
 
-      <script src="../static/laydate/laydate.js"></script>
-		<script>
-			lay('#version').html('-v'+ laydate.v);
-			laydate.render({
-				elem: '#date'
-			  ,range: true
-			  ,theme: '#2c9eae'
-			});
-			</script>
+		<!--<script>-->
+		<!--	lay('#version').html('-v'+ laydate.v);-->
+		<!--	laydate.render({-->
+		<!--		elem: '#date'-->
+		<!--	  ,range: true-->
+		<!--	  ,theme: '#2c9eae'-->
+		<!--	});-->
+		<!--	</script>-->
    </body>
 </html>
-        

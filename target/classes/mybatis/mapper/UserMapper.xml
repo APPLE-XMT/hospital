@@ -20,6 +20,10 @@
         from user where state=1
     </sql>
 
+    <select id="findByUsername" parameterType="java.lang.String" resultMap="userMap">
+        <include refid="all"></include> and username=#{username}
+    </select>
+
     <select id="findOne" resultType="User" parameterType="User">
         select id, username, password
         from user

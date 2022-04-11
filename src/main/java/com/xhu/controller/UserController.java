@@ -265,7 +265,6 @@ public class UserController {
 
     /**
      * 账号注销
-     *
      * @param password
      * @param session
      * @return
@@ -295,5 +294,27 @@ public class UserController {
         } else {
             return ResultUtil.error("密码错误");
         }
+    }
+
+    /**
+     * 根据姓名查询用户
+     * @param username
+     * @param session
+     * @return
+     */
+    @RequestMapping("findUser")
+    @ResponseBody
+    public ResultVo findByName(String username,HttpSession session){
+        String name = (String) session.getAttribute("username");
+        if (name == null) {
+            return ResultUtil.error("请登录后操作");
+        }
+        List<User> users= userMapper.findByUsername(username);
+        if(users.isEmpty()){
+            return ResultUtil.error("用户不存在");
+        }
+        JSONObject object=new JSONObject();
+        object.put("users",users);
+        return ResultUtil.success(object);
     }
 }

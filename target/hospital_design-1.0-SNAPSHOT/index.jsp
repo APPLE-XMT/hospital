@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<jsp:forward page="/returnIndex"></jsp:forward>
+<jsp:forward page="/returnLogin"></jsp:forward>
 </body>
 </html>

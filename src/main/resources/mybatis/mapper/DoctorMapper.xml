@@ -16,12 +16,51 @@
         <result column="work_time" jdbcType="INTEGER" property="workTime"/>
     </resultMap>
 
-    <select id="viewDoctor" resultMap="docMap">
-        select *
+    <resultMap id="docVoMap" type="com.xhu.util.docVo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="doctor_name" jdbcType="VARCHAR" property="doctorName"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="card" jdbcType="VARCHAR" property="card"/>
+        <result column="phone" jdbcType="CHAR" property="phone"/>
+        <result column="departmentName" jdbcType="VARCHAR" property="departmentName"/>
+        <result column="positionName" jdbcType="VARCHAR" property="positionName"/>
+        <result column="work_time" jdbcType="INTEGER" property="workTime"/>
+    </resultMap>
+
+    <sql id="dep">
+            (select id from department where department_name = #{depName})
+    </sql>
+
+    <sql id="pos">
+            (select id from position where position_name = #{posName})
+    </sql>
+
+    <sql id="all">
+        select id,
+               doctor_name,
+               sex,
+               age,
+               card,
+               phone,
+               (select department_name from department where id = department_id) as departmentName,
+               (select position_name from position where id = position_id)       as positionName,
+               work_time
         from doctor
+    </sql>
+
+    <select id="viewDoctor" resultMap="docVoMap">
+        <include refid="all"></include>
     </select>
 
-    <update id="modify" parameterType="Doctor">
+    <select id="oneDoctor" parameterType="java.util.Map" resultMap="docVoMap">
+        <include refid="all"></include>
+        where doctor_name=#{doctorName}
+        and department_id =
+        <include refid="dep"></include>
+    </select>
+
+    <update id="modify" parameterType="docVo">
         update doctor
         <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
             <if test="doctorName!=null">
@@ -40,10 +79,10 @@
                 phone=#{phone},
             </if>
             <if test="departmentId!=null">
-                department_id=#{departmentId},
+                department_id=<include refid="dep"></include>,
             </if>
             <if test="positionId!=null">
-                position_id=#{positionId},
+                position_id=<include refid="pos"></include>,
             </if>
             <if test="workTime!=null">
                 work_time=#{workTime},
@@ -58,8 +97,10 @@
               #{id}
     </delete>
 
-    <insert id="addDoc" parameterType="Doctor">
+    <insert id="addDoc" parameterType="docVo">
         insert into doctor(doctor_name, sex, age, card, phone, department_id, position_id, work_time)
-        values (#{doctorName}, #{sex}, #{age}, #{card}, #{phone}, #{departmentId}, #{positionId}, #{workTime})
+        values (#{doctorName}, #{sex}, #{age}, #{card}, #{phone},
+                <include refid="dep"></include>,
+                <include refid="pos"></include>, #{workTime})
     </insert>
 </mapper>

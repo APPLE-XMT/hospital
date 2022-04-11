@@ -26,4 +26,6 @@ public interface UserMapper extends Mapper<User> {
     int insertUser(User user);
 
     int updateState(String card);
+
+    List<User> findByUsername(String username);
 }

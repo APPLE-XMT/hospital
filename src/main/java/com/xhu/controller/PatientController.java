@@ -54,6 +54,7 @@ public class PatientController {
         if (CheckUtil.checkDoctor(session) == false) {
             return ResultUtil.error("没有操作权限");
         }
+        //System.out.println(id);
         List<Patient> patients=patientMapper.findBelong(id);
         JSONObject patientJson = new JSONObject();
         patientJson.put("patients", patients);
@@ -89,6 +90,12 @@ public class PatientController {
         }
     }
 
+    /**
+     * 添加患者
+     * @param patient
+     * @param session
+     * @return
+     */
     @RequestMapping("/insertPa")
     @ResponseBody
     public ResultVo insertPa(Patient patient,HttpSession session){
@@ -110,5 +117,26 @@ public class PatientController {
         }else {
             return ResultUtil.error("系统出错，请重试");
         }
+    }
+
+    /**
+     * 根据身份证号查询患者
+     * @param card
+     * @param session
+     * @return
+     */
+    @RequestMapping("findByCard")
+    @ResponseBody
+    public ResultVo findByCard(String card,HttpSession session){
+        if (CheckUtil.checkLogin(session) == false) {
+            return ResultUtil.error("请登录后操作");
+        }
+        Patient patient=patientMapper.search(card);
+        if(patient==null){
+            return ResultUtil.error("患者不存在");
+        }
+        JSONObject object=new JSONObject();
+        object.put("patient",patient);
+        return ResultUtil.success(object);
     }
 }

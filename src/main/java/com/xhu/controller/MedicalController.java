@@ -1,6 +1,7 @@
 package com.xhu.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.xhu.entity.MedicalRecord;
 import com.xhu.mapper.MedicalRecordMapper;
 import com.xhu.util.CheckUtil;
@@ -193,8 +194,9 @@ public class MedicalController {
                 String sqlPath = ImageUtil.uploadImage(picFile);
                 medicalRecord.setImage(sqlPath);
             }
+            System.out.println(medicalRecord);
             result = medicalRecordMapper.modifyRc(medicalRecord);
-        } catch (Exception exception) {
+        } catch (Exception exception){
             exception.printStackTrace();
             return ResultUtil.error("信息不匹配或系统出错，请重试");
         }

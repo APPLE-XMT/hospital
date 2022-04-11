@@ -439,6 +439,17 @@ html body .content .content-wrapper{padding-top: 10px;}
 .page li a{font-size: 14px;}
 .topbtn{padding-bottom: 15px;}
 
+.box{
+    position: absolute;
+    left:40%;
+    top: 50%;
+    width: 500px;
+    height: 500px;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    visibility:hidden;
+    background-color: #9597af;
+    color: lawngreen;
+}
 
 
 

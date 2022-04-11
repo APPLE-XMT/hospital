@@ -24,13 +24,19 @@
         from patient
     </sql>
 
+    <select id="search" resultMap="patientMap" parameterType="java.lang.String">
+        <include refid="all"></include> where card=#{card}
+    </select>
+
     <select id="viewPatients" resultMap="patientMap">
         <include refid="all"></include>
     </select>
 
     <select id="findBelong" parameterType="java.lang.Integer" resultMap="patientMap">
         <include refid="all"></include>
-        where belong_doctor=#{belongDoctor}
+        where belong_doctor in
+        (select id from doctor where card in
+        (select card from user where id=#{id}))
     </select>
 
     <insert id="insertPa" parameterType="Patient">

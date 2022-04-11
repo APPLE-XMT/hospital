@@ -5,13 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
-
+@Component(value = "ChickUtil")
 public class CheckUtil {
     private static RoleMapper roleMapper;
 
     @Autowired
     public void setRoleMapper(RoleMapper roleMapper){
-        CheckUtil.roleMapper=roleMapper;
+
+        this.roleMapper=roleMapper;
     }
 
     /**

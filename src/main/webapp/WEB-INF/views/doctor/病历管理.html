@@ -6,6 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>管理页面</title>
     <link rel="stylesheet" href="../../static/css/style.css">
+    <script src="../../static/js/jquery.min.js"></script>
+    <script src="../../static/js/bootstrap.min.js"></script>
+    <script src="../../static/js/smooth-scrollbar.js"></script>
+    <script src="../../static/js/custom.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#search').click(function () {
+                $.ajax({
+                    url: "/findByName",
+                    content: document.body,
+                    type: "post",
+                    data: {
+                        recordName: $('#realname').val()
+                    },
+                    success: function (data) {
+                        //展示到页面
+                        document.getElementById('id').innerHTML = data.data.records[0].id;
+                        document.getElementById('bl').innerHTML = data.data.records[0].recordName;
+                        document.getElementById('xm').innerHTML = data.data.records[0].patientName;
+                        document.getElementById('zz').innerHTML = data.data.records[0].symptom;
+                        document.getElementById('bs').innerHTML = data.data.records[0].history;
+                        document.getElementById('yy').innerHTML = data.data.records[0].preason;
+                        document.getElementById('cf').innerHTML = data.data.records[0].prescription;
+                        document.getElementById('ys').innerHTML = data.data.records[0].doctorId;
+                        document.getElementById('sj').innerHTML = data.data.records[0].recordTime;
+                        document.getElementById('jy').innerHTML = data.data.records[0].advice;
+
+                        //展示到弹窗
+                        $('#blid').attr('value',""+data.data.records[0].id);
+                        $('#recordname').attr('value',""+data.data.records[0].recordName);
+                        $('#name').attr('value',""+data.data.records[0].patientName);
+                        $('#symptom').attr('value',""+data.data.records[0].symptom);
+                        $('#history').attr('value',""+data.data.records[0].history);
+                        $('#reason').attr('value',""+data.data.records[0].preason);
+                        $('#prescription').attr('value',""+data.data.records[0].prescription);
+                        $('#doctor').attr('value',""+data.data.records[0].doctorId);
+                        $('#time').attr('value',""+data.data.records[0].recordTime);
+                        $('#advice').attr('value',""+data.data.records[0].advice);
+                    }
+                })
+            })
+            //var reTime=$('#time').val().replace(/-/g,'/')
+            $('#modify').click(function () {
+                    $.ajax({
+                        url: "/modifyRc",
+                        dataType: "json",
+                        type: "post",
+                        data: {
+                                id:$('#blid').val(),
+                                recordName: $('#recordname').val(),
+                                patientName: $('#name').val(),
+                                symptom: $('#symptom').val(),
+                                history: $('#history').val(),
+                                preason: $('#reason').val(),
+                                prescription: $('#prescription').val(),
+                                doctorId: $('#doctor').val(),
+                                recordTime: $('#time').val(),
+                                advice: $('#advice').val(),
+                            
+
+                        },
+                        success: function (data) {
+                                if(data.status=='success'){
+                                    alert("修改成功");
+                                }else{
+                                    alert(data.data)
+                                }
+                        }
+                    })
+            })
+        })
+
+    </script>
 </head>
 <body>
 <div id="loading">
@@ -32,7 +106,7 @@
                         <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-settings-5-fill"></i><span>系统设置</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul class="iq-submenu">
-                            <li><a href="基本设置.html">基本设置</a></li>
+                            <li><a href="/views/doctor/基本设置.html">基本设置</a></li>
                         </ul>
                     </li>
 
@@ -41,7 +115,7 @@
                                 class="ri-user-settings-fill"></i><span>用户管理 </span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul class="iq-submenu">
-                            <li><a href="个人中心.html">个人中心</a></li>
+                            <li><a href="/views/doctor/个人中心.html">个人中心</a></li>
                         </ul>
                     </li>
                     <li>
@@ -49,16 +123,16 @@
                                 class="ri-todo-fill"></i><span>病历管理</span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul class="iq-submenu">
-                            <li><a href="病历管理.html">病历管理</a></li>
-                            <li><a href="添加病历.html">添加病历</a></li>
+                            <li><a href="/views/doctor/病历管理.html">病历管理</a></li>
+                            <li><a href="/views/doctor/添加病历.html">添加病历</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-shield-user-fill"></i><span>患者管理 </span><i
                                 class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul class="iq-submenu">
-                            <li><a href="患者管理.html">患者管理</a></li>
-                            <li><a href="添加患者.html">添加患者</a></li>
+                            <li><a href="/views/doctor/患者管理.html">患者管理</a></li>
+                            <li><a href="/views/doctor/添加患者.html">添加患者</a></li>
                         </ul>
 
             </nav>
@@ -211,17 +285,15 @@
                     <div class="selbox">
                         <div class="form1">
                             <ul class="row">
-                                <li class="col-xs-4">
-                                    <span>病历号：</span>
-                                    <input type="text" class="form-control">
-                                </li>
+
 
                                 <li class="col-xs-4">
                                     <span>姓名：</span>
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="realname">
                                 </li>
                                 <li class="col-xs-4" style="padding-left: 10px">
-                                    <a href="javascript:;" class="btn btn-default">查询</a>
+                                    <a class="btn btn-default" id="search">查询</a>
+                                    <!--<input type="button" class="btn-default" id="search" value="查询"/>-->
                                     <!--<a class="btn" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">更多查询条件</a>-->
                                 </li>
                             </ul>
@@ -251,55 +323,55 @@
                             <tr>
                                 <th><a class="allsel"></a></th>
                                 <th>Id</th>
+                                <th>病历名</th>
                                 <th>患者姓名</th>
-                                <th>科室</th>
                                 <th>症状</th>
                                 <th>病史</th>
                                 <th>原因</th>
-                                <th>用药</th>
+                                <th>处方</th>
                                 <th>所属医师</th>
                                 <th>就诊时间</th>
                             </tr>
                             </thead>
                             <tbody>
                             <td><input type="checkbox" class="seli"></td>
-                            <td>01</td>
-                            <td>李忠</td>
-                            <td>内科</td>
-                            <td>腹泻</td>
-                            <td>无</td>
-                            <td>食物中毒</td>
-                            <td>止泻药</td>
-                            <td>张晓明</td>
-                            <td>2022.3.6</td>
+                            <td id="id"></td>
+                            <td id="bl"></td>
+                            <td id="xm"></td>
+                            <td id="zz"></td>
+                            <td id="bs"></td>
+                            <td id="yy"></td>
+                            <td id="cf"></td>
+                            <td id="ys"></td>
+                            <td id="sj"></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <h5 class="mt-2">医嘱详情：</h5>
-                    <input type="text" class="advice">
+                    <div  class="advice" ><p id="jy"></p></div>
                     <div class="">
-                        <a href="修改病历.html" class="btn btn-success">修改</a>
-                        <a href="javascript:;" class="btn btn-warning">拒绝</a>
+                        <a  class="btn btn-success" data-toggle="modal" data-target="#myModal">修改</a>
+                        <a href="javascript:;" class="btn btn-warning" id="delete">删除</a>
                     </div>
                     <nav aria-label="Page navigation" class="page">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="javascript:;" aria-label="Previous">
-                                    <span aria-hidden="true">上一页</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="javascript:;">1</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
-                            <li class="page-item active"><a class="page-link" href="javascript:;">3</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:;">4</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:;">5</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="javascript:;" aria-label="Next">
-                                    <span aria-hidden="true">下一页</span>
-                                </a>
-                            </li>
-                        </ul>
+                        <!--<ul class="pagination">-->
+                        <!--    <li class="page-item">-->
+                        <!--        <a class="page-link" href="javascript:;" aria-label="Previous">-->
+                        <!--            <span aria-hidden="true">上一页</span>-->
+                        <!--        </a>-->
+                        <!--    </li>-->
+                        <!--    <li class="page-item"><a class="page-link" href="javascript:;">1</a></li>-->
+                        <!--    <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>-->
+                        <!--    <li class="page-item active"><a class="page-link" href="javascript:;">3</a></li>-->
+                        <!--    <li class="page-item"><a class="page-link" href="javascript:;">4</a></li>-->
+                        <!--    <li class="page-item"><a class="page-link" href="javascript:;">5</a></li>-->
+                        <!--    <li class="page-item">-->
+                        <!--        <a class="page-link" href="javascript:;" aria-label="Next">-->
+                        <!--            <span aria-hidden="true">下一页</span>-->
+                        <!--        </a>-->
+                        <!--    </li>-->
+                        <!--</ul>-->
                     </nav>
 
                 </div>
@@ -327,20 +399,64 @@
         <!-- Footer END -->
     </div>
 </div>
+<!--修改窗口-->
+<div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-modal="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">修改病历</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="inputbox" style="width: 100%; max-width: 600px; margin: 0 auto;">
+                    <h5 class="mt-2" style="padding-top: 0!important; margin-top: 0!important">id</h5>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control" value="" id="blid" name="id">
+                    </fieldset>
+                    <h5 class="mt-2" style="padding-top: 0!important; margin-top: 0!important">病历名</h5>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control" value="" id="recordname" name="recordname">
+                    </fieldset>
+                    <h5 class="mt-2">患者姓名</h5>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control" value="" id="name">
+                    </fieldset>
+                    <h5 class="mt-2">病症</h5>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control" value="" id="symptom">
+                    </fieldset>
+                    <h5 class="mt-2">病史</h5>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control" value="" id="history">
+                    </fieldset>
+                    <h5 class="mt-2">原因</h5>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control" value="" id="reason">
+                    </fieldset>
+                    <h5 class="mt-2">处方</h5>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control" value="" id="prescription">
+                    </fieldset>
+                    <h5 class="mt-2">所属医师</h5>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control" value="" id="doctor">
+                    </fieldset>
+                    <h5 class="mt-2">就诊时间</h5>
+                    <fieldset class="form-group">
+                        <input type="date" class="form-control" value="" id="time">
+                    </fieldset>
+                    <h5 class="mt-2">医嘱</h5>
+                    <fieldset class="form-group">
+                        <input type="text" class="form-control" value="" id="advice">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-def" data-dismiss="modal">关闭</button>
+                <input type="button" class="btn btn-danger"id="modify" value="修改">
+            </div>
 
-<script src="../../static/js/jquery.min.js"></script>
-<script src="../../static/js/bootstrap.min.js"></script>
-<script src="../../static/js/smooth-scrollbar.js"></script>
-<script src="../../static/js/custom.js"></script>
-
-<script src="../static/laydate/laydate.js"></script>
-<script>
-    lay('#version').html('-v' + laydate.v);
-    laydate.render({
-        elem: '#date'
-        , range: true
-        , theme: '#2c9eae'
-    });
-</script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.xhu.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import javax.persistence.*;
@@ -35,6 +37,8 @@ public class MedicalRecord {
     private Integer doctorId;
 
     @Column(name = "record_time")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern="yyyy-MM-dd",timezone = "GMT+8")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date recordTime;
 
     private String image;

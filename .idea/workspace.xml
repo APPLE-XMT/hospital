@@ -9,15 +9,82 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="11b429e7-8bd7-4d3f-ac98-0e0d02617342" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/xhu/util/returnUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="11b429e7-8bd7-4d3f-ac98-0e0d02617342" name="Default Changelist" comment="Default Changelist">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/spring-web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/spring-web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/controller/DoctorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/controller/DoctorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/controller/MedicalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/controller/MedicalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/controller/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/entity/MedicalRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/entity/MedicalRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/mapper/DoctorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/mapper/DoctorMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/mapper/PatientMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/mapper/PatientMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/util/CheckUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/util/CheckUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/xhu/util/returnUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/xhu/util/returnUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/DoctorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/DoctorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/PatientMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/PatientMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/css.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/typography.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/static/css/typography.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/个人中心.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/个人中心.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/修改病历.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/病历管理.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/doctor/病历管理.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manager/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manager/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manager/病历管理.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/manager/病历管理.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/sign-in.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/sign-in.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index1.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xhu/controller/DoctorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xhu/controller/DoctorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xhu/controller/MedicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xhu/controller/MedicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xhu/controller/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xhu/controller/PatientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xhu/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xhu/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xhu/entity/MedicalRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xhu/entity/MedicalRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xhu/mapper/DoctorMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xhu/mapper/DoctorMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xhu/mapper/PatientMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xhu/mapper/PatientMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xhu/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xhu/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/xhu/util/CheckUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/xhu/util/CheckUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapper/DoctorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/DoctorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapper/PatientMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/PatientMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mybatis/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mybatis/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/controller/DoctorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/controller/DoctorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/controller/MedicalController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/controller/MedicalController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/controller/PatientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/controller/PatientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/entity/MedicalRecord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/entity/MedicalRecord.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/mapper/DoctorMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/mapper/DoctorMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/mapper/PatientMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/mapper/PatientMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/util/CheckUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/util/CheckUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/vo/CheckUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/vo/ImageUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/vo/ResultUtil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/com/xhu/vo/ResultVo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/mybatis/mapper/DoctorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/mybatis/mapper/DoctorMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/mybatis/mapper/PatientMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/mybatis/mapper/PatientMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/mybatis/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/classes/mybatis/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/lib/commons-io-2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/static/css/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/static/css/css.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/static/css/typography.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/static/css/typography.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/doctor/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/doctor/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/doctor/个人中心.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/doctor/个人中心.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/doctor/修改病历.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/doctor/病历管理.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/doctor/病历管理.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/manager/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/manager/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/manager/病历管理.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/manager/病历管理.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/sign-in.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/views/sign-in.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/hospital_design-1.0-SNAPSHOT/index1.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +120,9 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="D:\software\IDEA\repository" />
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../../software/IDEA/apache-maven-3.8.1-bin/apache-maven-3.8.1" />
-        <option name="showDialogWithAdvancedSettings" value="true" />
-        <option name="userSettingsFile" value="D:\software\IDEA\apache-maven-3.8.1-bin\apache-maven-3.8.1\conf\settings.xml" />
+        <option name="localRepository" value="D:\java\IntelliJ IDEA 2021.1.2\maven\repository" />
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/apache-maven-3.8.1" />
+        <option name="userSettingsFile" value="D:\java\IntelliJ IDEA 2021.1.2\maven\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -66,22 +132,30 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="工件" />
+    <property name="project.structure.proportion" value="0.14550781" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\LHW\Desktop\hospital\hospital\src\main\webapp\WEB-INF\views" />
       <recent name="C:\Users\APPLE\Desktop\graduate\hospital\src\main\webapp" />
       <recent name="D:\学习\graduate design\exercise\hospital_design\src\main\webapp\WEB-INF\static" />
       <recent name="D:\学习\graduate design\exercise\hospital_design\src\main\webapp\WEB-INF\image" />
       <recent name="D:\学习\graduate design\exercise\hospital_design\src\main\java\com\xhu" />
-      <recent name="D:\学习\graduate design\exercise\hospital_design\src\main\webapp\WEB-INF" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\学习\graduate design\exercise\hospital_design\src\main\resources\mybatis" />
@@ -90,21 +164,18 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Tomcat 8.5.50" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.50" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="1.8" nameIsGenerated="true">
-      <option name="COMMON_VM_ARGUMENTS" value="-Dfile.encoding=UTF-8" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="hospital:war exploded">
@@ -187,7 +258,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="hospital_design:war exploded" />
           <artifact name="hospital:war exploded" />
         </option>
       </method>
@@ -220,6 +290,18 @@
       <workItem from="1648121092907" duration="1899000" />
       <workItem from="1648223421116" duration="628000" />
       <workItem from="1648259265998" duration="4102000" />
+      <workItem from="1648269773460" duration="8366000" />
+      <workItem from="1648280693183" duration="21554000" />
+      <workItem from="1648645846170" duration="637000" />
+      <workItem from="1648646943824" duration="4130000" />
+      <workItem from="1648651797282" duration="22935000" />
+      <workItem from="1648797419174" duration="681000" />
+      <workItem from="1648812558641" duration="8260000" />
+      <workItem from="1648870147354" duration="2260000" />
+      <workItem from="1649061292772" duration="1464000" />
+      <workItem from="1649490121769" duration="4975000" />
+      <workItem from="1649655036066" duration="9404000" />
+      <workItem from="1649664982407" duration="1964000" />
     </task>
     <servers />
   </component>

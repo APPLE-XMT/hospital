@@ -1,106 +1,147 @@
 <!doctype html>
 <html lang="zh">
-   <head>
-      <!-- Required meta tags -->
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>管理页面</title>
-      <link rel="stylesheet" href="../static/css/style.css">
-       <script type="text/javascript" src="../static/js/jquery.min.js"></script>
-       <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-       <script type="text/javascript" src="../static/js/smooth-scrollbar.js"></script>
-       <script type="text/javascript" src="https://www.dowebok.com/demo/2014/93/js/owl.carousel.js"></script>
-       <script type="text/javascript" src="../static/js/echarts.min.js"></script>
-       <script type="text/javascript" src="../static/js/custom.js"></script>
-   </head>
-   <body>
-<div id="loading"><div id="loading-center"></div></div>
-  
-      <!-- loader END -->
-        <!-- Sign in Start -->
-  <!-- loader END -->
-        <!-- Sign in Start -->
-        <section class="sign-in-page">
-            <div class="container sign-in-page-bg mt-5 p-0">
-                <div class="row no-gutters">
-                    <div class="col-md-6 text-center">
-                        <div class="sign-in-detail text-white">
-                            <a class="sign-in-logo mb-5"><img src="../static/images/logo2.png" class="img-fluid" alt="logo"></a>
-                            <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="true" data-items="1" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="0">
-                                <div class="item">
-                                    <img src="../static/images/login/hospital.jpg" class="img-fluid mb-4" alt="logo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 position-relative">
-                        <div class="sign-in-from">
-                            <h3 class="mb-0">用户注册</h3>
-                            <p>输入相关信息进行注册</p>
-                            <form class="mt-4">
-                                <div class="form-group">
-                                    <label for="exampleInputRealname" style="margin: 0 0 10px 0">真实姓名</label>
-                                    <input type="text" class="form-control mb-0" id="exampleInputRealname" placeholder="请输入真实姓名" required/>
-                                    <label for="exampleInputCard" style="margin: 10px 0 10px 0">身份证</label>
-                                    <input type="text" class="form-control mb-0" id="exampleInputCard" placeholder="请输入身份证"required/>
-                                    <label for="exampleInputAddress" style="margin: 10px 0 10px 0">地址</label>
-                                    <input type="text" class="form-control mb-0" id="exampleInputAddress" placeholder="请输入地址"required/>
-                                    <label for="exampleInputPhone" style="margin: 10px 0 10px 0">电话</label>
-                                    <input type="text" class="form-control mb-0" id="exampleInputPhone" placeholder="请输入电话"required/>
-                                    <label for="exampleInputUsername" style="margin: 0 0 10px 0">用户名</label>
-                                    <input type="text" class="form-control mb-0" id="exampleInputUsername" placeholder="请输入用户名"required/>
-                                    <label for="exampleInputPassword"  style="margin: 10px 0 10px 0">密码</label>
-                                    <input type="password" class="form-control mb-0" id="exampleInputPassword" placeholder="请输入密码"required/>
-                                    <label for="exampleInputPassword1"  style="margin: 10px 0 10px 0">确认密码</label>
-                                    <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="请输入密码"required/>
-                                    <label for="exampleInputEmail"  style="margin: 10px 0 10px 0">电子邮箱</label>
-                                    <input type="email" class="form-control mb-0" id="exampleInputEmail" placeholder="请输入邮箱"required/>
-                                    <input type="button" class="btn btn-primary float-right" id="submit"value="确定">
-                                </div>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>管理页面</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script type="text/javascript" src="../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/js/smooth-scrollbar.js"></script>
+    <script type="text/javascript" src="https://www.dowebok.com/demo/2014/93/js/owl.carousel.js"></script>
+    <script type="text/javascript" src="../static/js/echarts.min.js"></script>
+    <script type="text/javascript" src="../static/js/custom.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //调用注册接口
+            $('#submit').click(function () {
+                var psw1 = $('#exampleInputPassword').val();
+                var psw2 = $('#exampleInputPassword1').val();
+                if (psw1 != psw2) {
+                    alert("两次密码输入不一致");
+                    return;
+                }
+                $.ajax({
+                    url: "/register",
+                    context: document.body,
+                    type: "post",
+                    data: {
+                        username: $('#exampleInputUsername').val(),
+                        password: $('#exampleInputPassword').val(),
+                        realName: $('#exampleInputRealname').val(),
+                        card: $('#exampleInputCard').val(),
+                        phone: $('#exampleInputPhone').val(),
+                        email: $('#exampleInputEmail').val(),
+                        address: $('#exampleInputAddress').val(),
+                    },
+                    success: function (data) {
+                        if (data.status == "success") {
+                            //检查验证码
+                            $('#chick').click(function(){
+                                $.ajax({
+                                    url:"/active",
+                                    context: document.body,
+                                    type: "post",
+                                    data:{
+                                        card: $('#exampleInputChick').val()
+                                    },
+                                    success:function(data){
+                                        if(data.status=="success"){
+                                            alert("用户名可用");
+                                            location.href="login.html"
+                                        }else {
+                                            alert(data.message)
+                                        }
+                                    }
+                                })
+                            })
+                        } else {
+                            alert(data.message)
+                        }
+                    }
+                })
+            })
 
-                            </form>
+        })
+    </script>
+</head>
+<body>
+<div id="loading">
+    <div id="loading-center"></div>
+</div>
+
+<!-- loader END -->
+<!-- Sign in Start -->
+<!-- loader END -->
+<!-- Sign in Start -->
+<section class="sign-in-page">
+    <div class="container sign-in-page-bg mt-5 p-0">
+        <div class="row no-gutters">
+            <div class="col-md-6 text-center">
+                <div class="sign-in-detail text-white">
+                    <a class="sign-in-logo mb-5"><img src="../static/images/logo2.png" class="img-fluid" alt="logo"></a>
+                    <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="true"
+                         data-items="1" data-items-laptop="1" data-items-tab="1" data-items-mobile="1"
+                         data-items-mobile-sm="1" data-margin="0">
+                        <div class="item">
+                            <img src="../static/images/login/hospital.jpg" class="img-fluid mb-4" alt="logo">
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <div class="col-md-6 position-relative">
+                <div class="sign-in-from">
+                    <h3 class="mb-0">用户注册</h3>
+                    <p>输入相关信息进行注册</p>
+                    <form class="mt-4">
+                        <div class="form-group">
+                            <label for="exampleInputRealname" style="margin: 0 0 10px 0">真实姓名</label>
+                            <input type="text" class="form-control mb-0" id="exampleInputRealname" placeholder="请输入真实姓名" required/>
+                            <label for="exampleInputCard" style="margin: 10px 0 10px 0">身份证</label>
+                            <input type="text" class="form-control mb-0" id="exampleInputCard" placeholder="请输入身份证" required/>
+                            <label for="exampleInputAddress" style="margin: 10px 0 10px 0">地址</label>
+                            <input type="text" class="form-control mb-0" id="exampleInputAddress" placeholder="请输入地址" required/>
+                            <label for="exampleInputPhone" style="margin: 10px 0 10px 0">电话</label>
+                            <input type="text" class="form-control mb-0" id="exampleInputPhone" placeholder="请输入电话" required/>
+                            <label for="exampleInputUsername" style="margin: 0 0 10px 0">用户名</label>
+                            <input type="text" class="form-control mb-0" id="exampleInputUsername" placeholder="请输入用户名" required/>
+                            <label for="exampleInputPassword" style="margin: 10px 0 10px 0">密码</label>
+                            <input type="password" class="form-control mb-0" id="exampleInputPassword" placeholder="请输入密码" required/>
+                            <label for="exampleInputPassword1" style="margin: 10px 0 10px 0">确认密码</label>
+                            <input type="password" class="form-control mb-0" id="exampleInputPassword1" placeholder="请输入密码" required/>
+                            <label for="exampleInputEmail" style="margin: 10px 0 10px 0">电子邮箱</label>
+                            <input type="email" class="form-control mb-0" id="exampleInputEmail" placeholder="请输入邮箱" required/>
+                            <input type="button" class="btn btn-primary float-right" id="submit" data-toggle="modal" data-target="#myModal" value="注册">
+                        </div>
 
-
-   </body>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--验证管理-->
+<div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  aria-modal="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">用户校验</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="inputbox" style="width: 100%; max-width: 600px; margin: 0 auto;">
+                    <h5 class="mt-2" style="padding-top: 0!important; margin-top: 0!important">验证码</h5>
+                    <fieldset class="form-group">
+                        <input type="email" class="form-control mb-0" id="exampleInputChick" placeholder="请输入验证码" required/>
+                        <input type="button" class="btn btn-primary float-right" id="chick" value="确定">
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 </html>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#submit').click(function(){
-            var psw1 = $('#exampleInputPassword').val();
-            var psw2 = $('#exampleInputPassword1').val();
-            if (psw1 != psw2) {
-                alert("两次密码输入不一致");
-                return;
-            }
-            $.ajax({
-                url: "register",
-                context: document.body,
-                type: "post",
-                data: {
-                    username: $('#exampleInputUsername').val(),
-                    password: $('#exampleInputPassword').val(),
-                    realName: $('#exampleInputRealname').val(),
-                    card: $('#exampleInputCard').val(),
-                    phone: $('#exampleInputPhone').val(),
-                    email: $('#exampleInputEmail').val(),
-                    address: $('#exampleInputAddress').val(),
-                },
-                success: function (data) {
-                    alert("123")
-                    if (data.flag==true) {
-                        alert("用户名可用");
-                        location.href = "login.html"
-                    } else {
-                        alert("用户重复")
-                    }
-
-                }
-            })
-        })
-    })
-</script>

@@ -128,7 +128,17 @@
       <artifactId>javax.mail</artifactId>
       <version>1.6.2</version>
     </dependency>
-
+      <dependency>
+          <groupId>com.alibaba</groupId>
+          <artifactId>dubbo</artifactId>
+          <version>2.6.0</version>
+      </dependency>
+    <!-- springmvc提交表单时正确的接收date类型参数的jar包 -->
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>2.3</version>
+    </dependency>
   </dependencies>
 
   <build>

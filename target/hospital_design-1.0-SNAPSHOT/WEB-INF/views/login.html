@@ -28,7 +28,7 @@
                     //只关注Web服务端响应的函数
                     success: function (res) {
                         if (res.status == "success") {
-                            location.href="/returnIndex";
+                            location.href="/returnDoctorIndex";
                         } else if (res.status == "error") {
                             alert(res.data);
                         }
@@ -89,5 +89,6 @@
         </div>
     </div>
 </section>
+
 </body>
 </html>
